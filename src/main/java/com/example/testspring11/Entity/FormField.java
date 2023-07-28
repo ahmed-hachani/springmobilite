@@ -1,8 +1,6 @@
 package com.example.testspring11.Entity;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +12,8 @@ import javax.persistence.ManyToOne;
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class FormField {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

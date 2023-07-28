@@ -1,26 +1,47 @@
 package com.example.testspring11.Entity;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @ToString
-public class User {
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String userId;
+    private Long userId;
 
     private String name;
     private String email;
     private String password;
-    private Role role;
+//    @Enumerated(EnumType.STRING)
+//    private Role role;
+    private String role;
+    @JsonIgnore
+    @OneToMany (mappedBy = "user")
+    private List <FormData> FormDatas;
 
+    public User(Long userId, String name, String email, String password, String role) {
+        this.userId = userId;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
+
+    public User(String name, String email, String password, String role) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
 }
