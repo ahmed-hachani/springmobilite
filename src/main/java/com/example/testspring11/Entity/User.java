@@ -23,14 +23,14 @@ public class User implements Serializable {
     private String name;
     private String email;
     private String password;
-//    @Enumerated(EnumType.STRING)
-//    private Role role;
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
     @JsonIgnore
     @OneToMany (mappedBy = "user")
     private List <FormData> FormDatas;
 
-    public User(Long userId, String name, String email, String password, String role) {
+    public User(Long userId, String name, String email, String password, Role role) {
         this.userId = userId;
         this.name = name;
         this.email = email;
@@ -38,7 +38,7 @@ public class User implements Serializable {
         this.role = role;
     }
 
-    public User(String name, String email, String password, String role) {
+    public User(String name, String email, String password, Role role) {
         this.name = name;
         this.email = email;
         this.password = password;

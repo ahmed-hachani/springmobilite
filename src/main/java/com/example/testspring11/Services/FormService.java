@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @Slf4j
 public class FormService implements IFormService{
-    FormRepository formRepository;
+    private final FormRepository formRepository;
     @Override
     public List<Form> retrieveAllForms() {
         return formRepository.findAll();
@@ -28,8 +28,13 @@ public class FormService implements IFormService{
     }
 
     @Override
-    public Form updateForm(Form f) {
-        return formRepository.save(f);
+    public Form updateForm(Long id,Form f) {
+        return formRepository.findById(id)
+                .map(p->{
+                    p.setDescription(f.getDescription());
+                    p.setFormName((f.getFormName()));
+                    return formRepository.save(f);
+                }).orElseThrow(()-> new RuntimeException("Form not found!"));
     }
 
     @Override

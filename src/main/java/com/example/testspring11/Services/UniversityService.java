@@ -4,6 +4,7 @@ import com.example.testspring11.Entity.University;
 import com.example.testspring11.Repository.UniversityRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class UniversityService implements IUniversityService{
 
-    UniversityRepository universityRepository;
+    private final UniversityRepository universityRepository;
     @Override
     public List<University> retrieveAllUniversities() {
         return universityRepository.findAll();
@@ -30,8 +31,13 @@ public class UniversityService implements IUniversityService{
     }
 
     @Override
-    public University updateUniversity(University u) {
-        return universityRepository.save(u);
+    public University updateUniversity(Long id,University u) {
+        return universityRepository.findById(id)
+                .map(p->{
+                    p.setLocation(u.getLocation());
+                    p.setName((u.getName()));
+                    return universityRepository.save(u);
+                }).orElseThrow(()-> new RuntimeException("user not found!"));
     }
 
     @Override

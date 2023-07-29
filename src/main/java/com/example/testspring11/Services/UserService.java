@@ -30,7 +30,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public User updateUser(User u) {
+    public User updateUser(Long id,User u) {
         return userRepository.save(u);
     }
 
