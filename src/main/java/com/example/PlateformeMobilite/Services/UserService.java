@@ -47,6 +47,9 @@ public class UserService implements IUserService {
     public String getEncodedPassword(String password){
         return bCryptPasswordEncoder.encode(password);
     }
+    public List<Object[]> getUsersAndForms() {
+        return userRepository.findUsersAndForms();
+    }
 
 //    BusRepository Clr;
 

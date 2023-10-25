@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -22,8 +23,11 @@ public class UniversityService implements IUniversityService {
 
     @Override
     public University retrieveUniversityById(Long UniversityId) {
-        return universityRepository.findById(UniversityId).get();
-    }
+        //return universityRepository.findById(UniversityId).get();
+
+
+    Optional<University> optionalUniversity = universityRepository.findById(UniversityId);
+    return optionalUniversity.orElse(null); }// Return null if not found
 
     @Override
     public University addUniversity(University u) {

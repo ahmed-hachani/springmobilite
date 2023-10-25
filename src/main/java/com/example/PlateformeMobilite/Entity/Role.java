@@ -3,6 +3,7 @@ package com.example.PlateformeMobilite.Entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -11,7 +12,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 
-public class Role {
+public class Role implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -47,6 +48,6 @@ public class Role {
     public String toString() {
         return this.role;
     }*/
-    @ManyToMany (mappedBy = "roles")
-    private List<User> user;
+//    @ManyToMany (mappedBy = "roles")
+//    private List<User> user;
 }

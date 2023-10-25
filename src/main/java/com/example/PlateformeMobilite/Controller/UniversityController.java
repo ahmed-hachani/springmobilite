@@ -9,6 +9,8 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:8081", maxAge = 3600, allowCredentials="true")
+
 public class UniversityController {
 
     private final IUniversityService ur;

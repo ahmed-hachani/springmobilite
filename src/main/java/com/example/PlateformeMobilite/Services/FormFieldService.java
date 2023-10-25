@@ -42,4 +42,8 @@ public class FormFieldService implements IFormFieldService {
         formFieldRepository.deleteById(FormFieldId);
 
     }
+    @Override
+    public List<FormField> getFormFieldsByFormId(Long formId) {
+        return formFieldRepository.findByForm_FormId(formId);
+    }
 }

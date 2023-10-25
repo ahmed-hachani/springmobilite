@@ -32,6 +32,9 @@ public class User implements Serializable {
 
     private String code;
 
+    @OneToMany
+    @OrderBy("moyenne DESC ")
+    private List<Moyenne> moyennes;
 
     @ManyToMany(fetch = FetchType.LAZY)//EAGER
     @JoinTable(
@@ -48,9 +51,16 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    @JsonIgnore
-    @OneToMany (mappedBy = "user")
-    private List <FormData> FormDatas;
+    public User(String username, String email, String password, Set<Role> roles) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+    }
+
+//    @JsonIgnore
+//    @OneToMany (mappedBy = "user")
+//    private List <FormData> FormDatas;
 
 
 

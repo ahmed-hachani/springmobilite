@@ -81,6 +81,10 @@ public class WebSecurityConfig  {
                                         new AntPathRequestMatcher("/api/test/**")
 
                                 ).permitAll()
+                                .requestMatchers(
+                                        new AntPathRequestMatcher("/**")
+
+                                ).permitAll()
                                 .antMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
                                 .anyRequest().authenticated()
                 );

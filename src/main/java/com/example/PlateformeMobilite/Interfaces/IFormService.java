@@ -10,5 +10,7 @@ public interface IFormService {
     public Form addForm(Form f);
     public Form updateForm(Long id,Form f);
     public void removeForm(Long formId);
+    public double calculateAverageForUser(Long formId, Long userId) ;
 
+    Long getFormIdByName(String formName);
 }

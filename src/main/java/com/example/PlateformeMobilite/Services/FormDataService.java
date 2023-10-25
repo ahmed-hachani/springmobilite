@@ -1,5 +1,6 @@
 package com.example.PlateformeMobilite.Services;
 
+import com.example.PlateformeMobilite.DTO.FormDataDTO;
 import com.example.PlateformeMobilite.Entity.FormData;
 import com.example.PlateformeMobilite.Interfaces.IFormDataService;
 import com.example.PlateformeMobilite.Repository.FormDataRepository;
@@ -17,6 +18,7 @@ public class FormDataService implements IFormDataService {
     public List<FormData> retrieveAllFormData() {
         return fd.findAll();
     }
+//    public List<FormDataDTO> retrieveAllFormDataDTO(){return fd.}
 
     @Override
     public FormData retrieveFormDataById(Long FormDataId) {

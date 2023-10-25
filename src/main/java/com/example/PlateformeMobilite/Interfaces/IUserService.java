@@ -10,6 +10,7 @@ public interface IUserService {
     public User addUser(User u);
     public User updateUser(Long id,User u);
     public void removeUser(Long userID);
+    public List<Object[]> getUsersAndForms();
 
 
 }

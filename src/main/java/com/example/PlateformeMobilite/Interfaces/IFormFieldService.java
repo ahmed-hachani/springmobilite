@@ -10,4 +10,5 @@ public interface IFormFieldService {
     public FormField addFormField(FormField f);
     public FormField updateFormField(Long id,FormField f);
     public void removeFormField (Long FormFieldId);
+    public List<FormField> getFormFieldsByFormId(Long formId);
 }

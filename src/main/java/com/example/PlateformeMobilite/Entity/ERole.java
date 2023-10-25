@@ -1,5 +1,5 @@
 package com.example.PlateformeMobilite.Entity;
 
 public enum ERole {
-    CANDIDAT,ADMIN,VISITEUR
+    CANDIDAT,ADMIN,VISITEUR,UNIVERSITY
 }
